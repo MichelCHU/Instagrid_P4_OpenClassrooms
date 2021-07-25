@@ -60,6 +60,7 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    /// press the UIButton "+" for can select a picture
     @IBAction func didPressForHavePicture(_ sender: UIButton) {
         buttonTapped = sender
         imagePicker.allowsEditing = false
@@ -69,11 +70,13 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Swipe Guesture
     
+    /// action for the swipe
     @objc
     private func onSwipe(_ sender: UISwipeGestureRecognizer) {
         animateMainView()
     }
     
+    /// animation during the swipe
     private func animateMainView() {
         UIView.animate(withDuration: 0.3, animations: {
             guard let transformAnimation = self.transformAnimation else { return }
@@ -90,6 +93,7 @@ final class HomeViewController: UIViewController {
         })
     }
     
+    /// detection of Orientation and Swipe position
     @objc
     private func resetOrientation() {
         guard let interfaceOrientation = windowInterfaceOrientation else { return }
@@ -116,8 +120,6 @@ final class HomeViewController: UIViewController {
 // MARK: - UIImagePickerControllerDelegate
 
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // MARK: - UIImagePickerControllerDelegate ( after selected and change UIbutton ) OK
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage =  info[.originalImage] as? UIImage {
